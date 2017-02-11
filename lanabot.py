@@ -87,7 +87,11 @@ def main():
     configLogging()
 
     parseConfig()
-    
+   
+    with open("banner") as f:
+        data = f.read()
+        print data
+ 
     last_update_id = None
     while True:
         updates = getUpdates(last_update_id)
