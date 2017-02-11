@@ -11,7 +11,7 @@ Planned features:
  
 The configuration file needs to be defined. Example of ```config.ini``` file:
 
-```
+```ini
 [Settings]
 ; Telegram API token, from @Botfather
 TOKEN = 111111:AAAAaaaaaaaaaaaaa
