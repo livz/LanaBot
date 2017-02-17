@@ -17,9 +17,9 @@ def getUpId(update):            return int(update["update_id"])
 def getResult(updates):         return updates["result"]
 
 # # Lambda functions to parse weather responses
-def getDesc(w):         return w["weather"][0]["description"]
-def getTemp(w):         return w["main"]["temp"]
-def getCity(w):         return w["name"]
+def getDesc(w):                 return w["weather"][0]["description"]
+def getTemp(w):                 return w["main"]["temp"]
+def getCity(w):                 return w["name"]
 
 logger = logging.getLogger("LanaBot")
 logger.setLevel(logging.DEBUG)
