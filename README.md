@@ -25,7 +25,17 @@ the inspiration to this, and some very handy implementation hints, came.
 
 ### Screenshots
 
+Back-end:
+
 ![Getting updates](images/banner.png)
+
+Start interacting with the bot:
+
+![Bot intro](images/intro.png)
+
+Chose location for weather status:
+
+![Choose location](images/location.png)
 
 
 ### Made with :heart: and:
@@ -36,7 +46,4 @@ the inspiration to this, and some very handy implementation hints, came.
  * [SQLite](https://docs.python.org/2/library/sqlite3.html) Lightwight disk-based database
  * [ASCII Art](http://www.kammerl.de/ascii/AsciiSignature.php) ASCII Text Signature Generator
  * [GitHub Markdown Emoji](https://gist.github.com/rxaviers/7360908) 
- 
-
-
 

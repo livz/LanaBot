@@ -89,24 +89,24 @@ def buildCitiesKeyboard():
 
 # Query OWM for the weather for place or coords
 def getWeather(place):
-    print type(place)
     if isinstance(place, dict):     # coordinates provided
         lat, lon = place["latitude"], place["longitude"]
         url = URL_OWM + "&lat=%f&lon=%f&cnt=1" % (lat, lon)
         logger.info("Requesting weather: " + url)
         js = makeRequest(url)
         logger.debug(js)
-        return "%s degrees, %s in %s" % (getTemp(js), getDesc(js), getCity(js))
+        return u"%s \N{DEGREE SIGN}C, %s in %s" % (getTemp(js), getDesc(js), getCity(js))
     else:                           # place name provided 
         # make req
         url = URL_OWM + "&q={}".format(place)
         logger.info("Requesting weather: " + url)
         js = makeRequest(url)
         logger.debug(js)
-        return "%s degrees, %s in %s" % (getTemp(js), getDesc(js), getCity(js))
+        return u"%s \N{DEGREE SIGN}C, %s in %s" % (getTemp(js), getDesc(js), getCity(js))
 
 # Send URL-encoded message to chat id
 def sendMessage(text, chatId, interface=None):
+    text = text.encode('utf-8', 'strict')                                                       
     text = urllib.quote_plus(text)
     url = URL + "sendMessage?text={}&chat_id={}&parse_mode=Markdown".format(text, chatId)
     if interface:
@@ -154,8 +154,7 @@ def handleUpdates(updates):
             del chats[chatId]
         else:
             keyboard = buildKeyboard(["/weather"])
-            sendMessage("Meowwwww I'm not that advanced. I only know these commands", 
-                chatId, keyboard)
+            sendMessage("Meowwwww! I learn new things every day but for now you can ask me about the weather.", chatId, keyboard)
 
 def main():
     configLogging()
