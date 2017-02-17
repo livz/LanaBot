@@ -5,7 +5,7 @@ This started as a learning project as my friend wanted to learn Python and to kn
 Planned features:
 
  * Deployment on Raspberry PI
- * Take screenshots with Picamera
+ * Take pictures with Picamera
  * Other cool AI :) features
  
  
@@ -18,6 +18,10 @@ TOKEN = 111111:AAAAaaaaaaaaaaaaa
 
 ; Long polling interval, in seconds. How long to keep connection open
 POLLING_TIMEOUT = 100
+
+; Open Weather Map API Key
+OWM_KEY = a3b2d786c264b21e6f3708c2bf4bc60
+
 ```
 
 Props to Gareth Dwyer :thumbsup: and his [Chatbot tutorial](https://www.codementor.io/garethdwyer/building-a-telegram-bot-using-python-part-1-goi5fncay), from which
