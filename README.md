@@ -37,6 +37,10 @@ Chose location for weather status:
 
 ![Choose location](images/location.png)
 
+Weather for current location:
+
+![Share location](images/weather.png)
+
 
 ### Made with :heart: and:
 
