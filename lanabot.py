@@ -4,6 +4,8 @@ import time
 import urllib 
 import ConfigParser
 import logging
+import signal
+import sys
 
 TOKEN = ""
 OWM_KEY = ""
@@ -26,6 +28,10 @@ logger.setLevel(logging.DEBUG)
 
 # Cities for weather requests
 cities = ["London", "Brasov"]
+
+def sigHandler(signal, frame):
+    logger.info("SIGINT received. Exiting... Bye bye")
+    sys.exit(0)
 
 # Configure file and console logging
 def configLogging():
@@ -144,6 +150,8 @@ def handleUpdates(updates):
             keyboard = buildCitiesKeyboard()
             chats[chatId] = "weatherReq"
             sendMessage("Select a city", chatId, keyboard)
+        elif text == "/start":
+            sendMessage("Cahn's Axiom: When all else fails, read the instructions", chatId)
         elif text.startswith("/"):
             logger.warning("Invalid command %s" % text)    
             continue
@@ -157,14 +165,21 @@ def handleUpdates(updates):
             sendMessage("Meowwwww! I learn new things every day but for now you can ask me about the weather.", chatId, keyboard)
 
 def main():
+    # Set up file and console loggers
     configLogging()
 
+    # Get tokens and keys
     parseConfig()
-   
+ 
+    # Intercept Ctrl-C SIGINT 
+    signal.signal(signal.SIGINT, sigHandler) 
+
+    # Display banner from file
     with open("banner") as f:
         data = f.read()
         print data
  
+    # Main loop
     last_update_id = None
     while True:
         updates = getUpdates(last_update_id)
